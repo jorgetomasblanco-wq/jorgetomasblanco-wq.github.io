@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script>(function(){var S,L;try{S=sessionStorage;L=localStorage;var q=new URLSearchParams(location.search);if(q.get("casa")==="1")L.setItem("carab_casa","1");if(q.get("casa")==="0")L.removeItem("carab_casa");var o=q.get("utm_source");if(!o&&document.referrer){var h=new URL(document.referrer).hostname.replace(/^www\./,"");if(h&&!/(^|\.)contraportada\.(es|pages\.dev)$/.test(h))o=h;}if(o)S.setItem("carab_origen",o.toLowerCase().replace(/[^a-z0-9._-]/g,"").slice(0,40));}catch(e){}window._carabCasa=function(){try{return L.getItem("carab_casa")==="1"}catch(e){return false}};window._carabOrigen=function(){try{return S.getItem("carab_origen")||"directo"}catch(e){return "directo"}};})();</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="/marca/favicon.svg" type="image/svg+xml"><link rel="icon" href="/marca/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/marca/icono-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=League+Spartan:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{ --ground:#f5f0e4; --ground-2:#efe9db; --ground-3:#e7dfca; --bone:#14110d; --sage:#6d6555; --sage-dim:#8a8271;
+ --line:rgba(20,17,13,.22); --gold:#b38f3e; --gold-hi:#8f7130; --cinnabar:#e2186f;
+ --serif:"Archivo","Helvetica Neue",Arial,sans-serif; --disp:"League Spartan","Archivo",Impact,sans-serif; --mono:"Archivo","Helvetica Neue",Arial,sans-serif; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--bone);font-family:var(--serif);font-size:18px;line-height:1.62}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.masthead{border-bottom:1px solid var(--line);padding:18px 0}
+.brand{font-family:var(--disp);font-weight:900;letter-spacing:.13em;text-transform:uppercase;font-size:16px;display:inline-flex;align-items:center;gap:11px;color:var(--bone);text-decoration:none}
+.brand .glyph{flex:none;width:26px;height:26px;display:block}
+.brand .mark{color:var(--gold)}
+h1{font-family:var(--disp);font-weight:900;font-size:clamp(38px,7vw,72px);line-height:.95;margin:34px 0 6px}
+h1 em{color:var(--gold);font-style:italic}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage-dim);margin:0}
+.lede{color:var(--sage);max-width:66ch}
+.legal-nav{display:flex;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;margin:26px 0 32px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase}
+.legal-nav a{color:var(--sage);text-decoration:none}
+.legal-nav a:hover,.legal-nav a.on{color:var(--gold)}
+section{max-width:78ch;margin:0 0 54px}
+.seclabel{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-dim);margin:0 0 4px}
+h3.sec{font-family:var(--disp);font-weight:900;font-size:clamp(26px,4vw,38px);margin:0 0 18px}
+h4{font-family:var(--disp);font-weight:600;font-size:20px;margin:28px 0 6px;color:var(--gold)}
+a{color:var(--gold)}
+ul.legal-datos{list-style:none;padding:0;margin:10px 0}
+ul.legal-datos li{padding:7px 0;border-bottom:1px solid var(--line)}
+.legal-fecha{font-family:var(--mono);font-size:12px;color:var(--sage-dim);margin-top:26px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:26px 0 44px}
+.sig{font-family:var(--disp);font-weight:900;letter-spacing:.13em;text-transform:uppercase;font-size:14px}
+.sig .mark{color:var(--gold)}
+.pie-titular{font-family:var(--mono);font-size:11px;color:var(--sage-dim)}
+.volver{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+/* paleta-2910 */
+.masthead{background:var(--bone);color:var(--ground);border-bottom:0}
+.masthead a,.masthead .brand{color:var(--ground)}
+.brand .mark,.masthead .mark{color:#c8a24c}
+a:hover{color:var(--gold-hi)}
+</style>
+<style>
+.botones{display:grid;gap:12px;max-width:560px;margin:8px 0 40px}
+.boton{display:block;border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-decoration:none;color:var(--bone);background:var(--ground-2)}
+.boton b{display:block;font-family:var(--disp);font-size:21px;color:var(--gold)}
+.boton span{color:var(--sage);font-size:16px}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:0 0 50px}
+.pz{display:block;text-decoration:none;color:var(--bone)}
+.pz img{width:100%;height:auto;border-radius:8px;display:block}
+.pz .k{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--sage-dim);margin-top:6px}
+.pz .t{display:block;font-size:15px;line-height:1.3}
+</style>
+<title>Contraportada en Instagram</title>
+<meta name="description" content="Las fichas de las que hablamos en Instagram: historia, discos y conciertos.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://contraportada.es/ig/">
+</head>
+<body>
+<header class="masthead"><div class="wrap"><a class="brand" href="/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=marca"><svg class="glyph" viewBox="0 0 42.3 30" aria-hidden="true" style="width:36px;height:26px"><circle cx="29.4" cy="15" r="12.3" fill="#060908" stroke="currentColor" stroke-opacity=".55" stroke-width="1.1"/><circle cx="29.4" cy="15" r="8.7" fill="none" stroke="currentColor" stroke-opacity=".22" stroke-width=".6"/><circle cx="29.4" cy="15" r="4.3" fill="#c8a24c"/><circle cx="29.4" cy="15" r="1.1" fill="#0d1512"/><rect x="0.6" y="2" width="26" height="26" rx="2.6" fill="#c8a24c"/><g stroke="#12190f" stroke-width="2.5" stroke-linecap="round"><line x1="5.7" y1="10.1" x2="20.6" y2="10.1"/><line x1="5.7" y1="15" x2="16.3" y2="15"/><line x1="5.7" y1="19.9" x2="18.9" y2="19.9"/></g></svg><span class="word">Contra<span class="mark">portada</span></span></a></div></header>
+<div class="wrap">
+  <p class="eyebrow">Desde Instagram</p>
+  <h1>La historia detrás de <em>cada disco</em></h1>
+  <p class="lede">Aquí está todo lo que has visto en nuestras publicaciones, con la ficha completa: quién tocó, dónde se grabó, qué pasó en la gira y la historia de cada artista.</p>
+  <div class="botones">
+    <a class="boton" href="https://contraportada.es/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=fonoteca"><b>Entra en la fonoteca</b><span>Más de dos mil discos con su historia, sus créditos y su reproductor.</span></a>
+    <a class="boton" href="https://contraportada.es/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=estante"><b>Crea tu estante</b><span>Entra con Google, guarda tus discos y recíbelos en cualquier dispositivo. En el menú «Mi estante» puedes apuntarte al boletín.</span></a>
+  </div>
+  <p class="seclabel">Publicaciones</p>
+  <div class="rejilla" id="rej"><a class="pz" data-f="2026-11-19" href="https://contraportada.es/disco/alejandro-sanz/mtv-unplugged/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=pieza-11"><img src="/ig/img/11-alejandro-sanz.jpg" alt="MTV Unplugged · Alejandro Sanz" loading="lazy" width="432" height="540"><span class="k">HACE 25 AÑOS · 20 NOV 2001</span><span class="t">MTV Unplugged · Alejandro Sanz</span></a></div>
+</div>
+<footer><div class="wrap"><div class="sig">Contra<span class="mark">portada</span></div><p class="pie-titular"><a href="/aviso-legal">Aviso legal</a> · <a href="/privacidad">Privacidad</a> · <a href="/cookies">Cookies</a></p></div></footer>
+<script>(function(){if(/[?&]todas=1/.test(location.search))return;var h=new Date().toISOString().slice(0,10),r=document.getElementById('rej');r.querySelectorAll('.pz').forEach(function(a){if(a.getAttribute('data-f')>h)a.remove();});if(!r.children.length)r.outerHTML='<p class="lede">La primera publicación está a punto de salir. Mientras tanto, la fonoteca entera está a un clic.</p>';})();</script>
+</body>
+</html>
