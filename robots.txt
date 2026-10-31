@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /ig/full/
+Disallow: /ig/reels/
+Disallow: /ig/stories/
 
 User-agent: GPTBot
 Disallow: /
