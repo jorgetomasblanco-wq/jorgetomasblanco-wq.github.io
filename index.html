@@ -8615,7 +8615,7 @@ footer .pie-explora a:hover{ color:var(--gold-hi,var(--gold-hi)); }
       }
     }
     /* Último intento: el mismo título sin el sufijo de reedición de Spotify. */
-    if(!_reintento){ var lim=_sinReedicion(album); if(lim) return findDeepByAA(artist,lim,1); }
+    if(!_reintento){ var lim=_sinReedicion(album); if(lim) return findDeepByAA(artist,lim,1); } if(!_reintento && /&/.test(String(artist||'')+String(album||''))){ return findDeepByAA(String(artist||'').replace(/&/g,' and '), String(album||'').replace(/&/g,' and '), 1); } /* 02/11/2026: Rattle & hum */
     return null;
   }
   /* AÑADIR AL ESTANTE = PEDIR LA FICHA.
@@ -9860,7 +9860,7 @@ footer .pie-explora a:hover{ color:var(--gold-hi,var(--gold-hi)); }
     var artist=(artEl&&artEl.value||'').trim(), album=(albEl&&albEl.value||'').trim();
     if(!artist||!album){ hint.style.color='var(--cinnabar)'; hint.textContent='Escribe el artista y el álbum.'; return; }
     var rec={artist:artist, title:album, year:(yrEl&&yrEl.value||'').trim(), genre:genEl.value}; // sin id: la carátula y la muestra se resuelven por iTunes
-    var arr=load(); arr.push(rec); save(arr); renderDiscs(); buildGenres(); applyFilter();
+    var arr=load(); arr.push(rec); save(arr); renderDiscs(); buildGenres(); applyFilter(); try{ if(typeof pideFichaSiFalta==='function'){ pideFichaSiFalta(artist, album, rec.year); } else if(typeof sugAdd==='function' && !(typeof findDeepByAA==='function' && findDeepByAA(artist,album)) && !(typeof sugYaEsta==='function' && sugYaEsta(artist,album))){ sugAdd(artist, album, rec.year||'', 'Añadido al estante'); } }catch(e1){} /* 02/11/2026: el formulario tambien pide la ficha */
     try{ resolveCovers(); }catch(e2){}
     /* Antes esto solo cambiaba una línea de letra pequeña y no se notaba. Ahora
        lo dice un cartel, con las dos salidas a mano. */
@@ -10958,7 +10958,16 @@ footer .pie-explora a:hover{ color:var(--gold-hi,var(--gold-hi)); }
     }
     function sube(){
       if(!ses || !perfil) return Promise.resolve();
+      /* 02/11/2026: ANTES DE SUBIR SE BAJA Y SE FUNDE. Subir la copia local tal cual
+         pisaba la fila del servidor y una pestaña vieja resucitaba lo quitado en otro
+         aparato (sin la lápida). Si no se puede bajar, no se sube: se reintenta. */
       return vigente().then(function(){
+        return api('/rest/v1/estantes?select=datos&user_id=eq.'+encodeURIComponent(perfil.id)+'&limit=1');
+      }).then(function(r){
+        if(!r || !r.ok) throw new Error('baja '+(r&&r.status));
+        return r.json();
+      }).then(function(f){
+        if(f && f.length && f[0] && f[0].datos) aplica(f[0].datos);
         return api('/rest/v1/estantes?on_conflict=user_id', {
           method:'POST',
           headers:{ 'Prefer':'resolution=merge-duplicates' },
@@ -11147,6 +11156,11 @@ footer .pie-explora a:hover{ color:var(--gold-hi,var(--gold-hi)); }
     }
     setTimeout(muestraBienv, 2600);
 
+    /* 02/11/2026: al volver a esta pestaña (móvil que se queda abierto), se baja el
+       estante para no trabajar sobre una copia vieja. */
+    document.addEventListener('visibilitychange', function(){
+      if(document.visibilityState==='visible' && ses && perfil){ try{ baja(); }catch(e){} }
+    });
     window.CARAB_AUTH = { entrar:entrar, salir:salir, borrarCuenta:borrarCuenta, sube:sube, aviso:muestraBienv };
   })();
 
