@@ -135,3 +135,32 @@ ul.gira .gsin, ul.gira .gaf{ font-family:var(--mono); font-size:10.5px; letter-s
 .gnota{ font-family:var(--mono); font-size:11px; color:var(--sage-dim); margin:10px 0 0; }
 
 /* marca-2910 */ .brand .mark,.sig .mark{color:#c8a24c} ul.gira .gt:hover{color:var(--bone)}
+
+/* 17/11/2026: ficha de disco con más elementos visuales */
+.tarj img{height:auto}
+ul.discog img{height:52px}
+.t30{border:2px solid var(--bone);background:var(--ground-2);padding:14px 18px 10px;margin:0 0 26px;max-width:var(--measure)}
+.t30 dl{margin:6px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:4px 22px}
+.t30 dl div{padding:5px 0;border-bottom:1px solid var(--line-2)}
+.t30 dt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-dim)}
+.t30 dd{margin:1px 0 0;font-size:15px;line-height:1.4}
+.fotohist.ancho img{max-height:520px}
+.listas{margin:28px 0;max-width:var(--measure)}
+ul.barras{list-style:none;margin:12px 0 0;padding:0}
+ul.barras li{display:grid;grid-template-columns:minmax(0,15em) 1fr 4.2em;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--line-2);font-size:14.5px}
+ul.barras .pais{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ul.barras .barra{height:9px;background:var(--ground-3)}
+ul.barras .barra i{display:block;height:100%;background:var(--gold)}
+ul.barras b{font-family:var(--mono);font-size:12px;text-align:right}
+.gnota{font-size:13.5px;color:var(--sage);margin:10px 0 0}
+.cifra{border-top:3px solid var(--gold);border-bottom:1px solid var(--line);padding:12px 0 6px;margin:26px 0;max-width:var(--measure)}
+.cifra p:last-child{font-family:var(--disp);font-size:19px;line-height:1.4;margin:4px 0 8px}
+.cov-lado{float:right;width:min(42%,260px);margin:6px 0 14px 22px;border:2px solid var(--bone)}
+.cov-lado img{display:block;width:100%;height:auto}
+section::after{content:"";display:table;clear:both}
+details.pers summary{cursor:pointer;list-style:none}
+details.pers summary::-webkit-details-marker{display:none}
+details.pers summary h2{display:inline}
+details.pers summary h2::after{content:" +";color:var(--gold)}
+details.pers[open] summary h2::after{content:" −"}
+@media (max-width:560px){.cov-lado{float:none;width:100%;margin:10px 0}ul.barras li{grid-template-columns:minmax(0,9em) 1fr 3.6em}}
