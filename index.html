@@ -3062,6 +3062,12 @@ footer .pie-explora a:hover{ color:var(--gold-hi,var(--gold-hi)); }
     return '';
   }
   function figuraFoto(f){
+    /* 17/11/2026: fotos no de Commons con `credito` y `fuente` (regla 15) */
+    if(f.credito){
+      var c2=esc(f.credito)+((f.fuente||f.pag)?' · <a href="'+esc(f.fuente||f.pag)+'" target="_blank" rel="noopener nofollow">fuente</a>':'');
+      return '<figure><img src="'+esc(f.src||f.url)+'" alt="'+esc(f.alt||f.pie||'')+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">'
+        + '<figcaption><div class="pc">'+(f.pie||'')+'</div><div class="cr">'+c2+'</div></figcaption></figure>';
+    }
     var cr='Foto: '+esc(f.autor||'desconocido');
     if(f.lic){ cr+=' · <a href="'+esc(f.licurl||f.pag||'')+'" target="_blank" rel="noopener nofollow">'+esc(f.lic)+'</a>'; }
     if(f.pag){ cr+=' · <a href="'+esc(f.pag)+'" target="_blank" rel="noopener nofollow">Commons</a>'; }
@@ -3077,9 +3083,11 @@ footer .pie-explora a:hover{ color:var(--gold-hi,var(--gold-hi)); }
   }
   function tejeHistoria(trozos, band, base){
     var fotos=(band&&band.fotos)||[], citas=(band&&band.citas)||[], out=[];
+    var caps={}; ((band&&band.capitulos)||[]).forEach(function(c){ if(c&&c.titulo) caps[c.antes]=c.titulo; }); /* 17/11/2026 capitulos */
     for(var i=0;i<trozos.length;i++){
-      out.push(trozos[i]);
       var idx=base+i;
+      if(caps[idx+1]) out.push('<h3>'+esc(caps[idx+1])+'</h3>');
+      out.push(trozos[i]);
       var fs=fotos.filter(function(f){ return f.tras===idx; });
       if(fs.length) out.push(bloqueFotos(fs));
       citas.filter(function(c){ return c.tras===idx; }).forEach(function(c){ out.push(citaHTML(c)); });
@@ -9228,7 +9236,15 @@ footer .pie-explora a:hover{ color:var(--gold-hi,var(--gold-hi)); }
       return /^<(p|div|section|h[1-6]|ul|ol|blockquote|figure)[\s>]/i.test(s) ? s : '<p>'+s+'</p>';
     }
     if(d.rich && d.rich.length){
-      d.rich.forEach(function(r){ main+=sec(r[0],r[1],r[2]); });
+      /* 17/11/2026 visuales intercalados: destacado y fotos_extra, uno cada dos bloques */
+      var _vis=[];
+      if(d.destacado && d.destacado.texto){
+        var _q=esc(d.destacado.quien||'');
+        _vis.push('<blockquote class="pull cita">«'+esc(String(d.destacado.texto).replace(/^[«"]+|[»"]+$/g,''))+'»'+(_q?'<span class="fte">— '+_q+'</span>':'')+'</blockquote>');
+      }
+      (d.fotos_extra||[]).forEach(function(f){ if(f&&f.url) _vis.push('<div class="fotohist">'+figuraFoto({src:f.url,pie:esc(f.pie||''),alt:f.pie||'',credito:f.credito||' ',fuente:f.fuente})+'</div>'); });
+      d.rich.forEach(function(r,i){ main+=sec(r[0],r[1],r[2]); if(i%2===0 && _vis.length) main+=_vis.shift(); });
+      main+=_vis.join('');
     }
     if(pintaCampo(d,'portada',d.cover)){
       main+=sec('La portada y el diseño','La portada', comoHtml(d.cover));
