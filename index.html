@@ -1307,6 +1307,7 @@ footer .pie-explora a:hover{ color:var(--gold-hi,var(--gold-hi)); }
   }
 </style>
 <style id="marca-2910">.brand .mark,.sig .mark{color:#c8a24c}.btn.lleno,.addform button,.addshelf-btn,.sbtn2,.pp-btn,.sugbtn:hover,.rankrow a.sp:hover,.legal-salida .volver:hover,.fichabtn:hover,ul.gira .gt:hover{color:var(--bone)}.fichabtn{color:var(--cinnabar);background:rgba(226,24,111,.07);border-color:var(--cinnabar)}.fichabtn:hover{background:var(--cinnabar);border-color:var(--cinnabar);color:var(--ground)}.fichabtn{height:26px;box-sizing:border-box;display:inline-flex;align-items:center;line-height:1}.rankrow a.sp{width:26px;height:26px;padding:0;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:10px;flex:0 0 26px}</style>
+<script src="/est.js?v=1" defer></script>
 </head>
 <body>
 
@@ -10076,7 +10077,7 @@ footer .pie-explora a:hover{ color:var(--gold-hi,var(--gold-hi)); }
     /* El ranking se cachea media hora: no hace falta al minuto y así no se
        castiga al servidor con una consulta por visita. */
     function baja(){
-      fetch(CFG.url+'/rest/v1/visitas?select=clave,veces&order=veces.desc&limit=1000', { headers:cabeceras() })
+      fetch(CFG.url+'/rest/v1/visitas?select=clave,veces&clave=not.like.zz-visitas*&order=veces.desc&limit=1000', { headers:cabeceras() })
         .then(function(r){ return r.ok ? r.json() : []; })
         .then(function(f){
           var m={}; (f||[]).forEach(function(x){ m[x.clave]=x.veces||0; });
